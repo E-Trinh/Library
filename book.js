@@ -39,20 +39,10 @@ function displayBook() {
     });
 }
 
-myLibrary.push(new Book("long long long long long title title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-displayBook();
+document.querySelector(".new-book").addEventListener("click", () => {
+    document.querySelector(".popup").style.display = "flex";
+});
+
+document.querySelector(".opacity-overlay").addEventListener("click", () => {
+    document.querySelector(".popup").style.display = "none";
+});
