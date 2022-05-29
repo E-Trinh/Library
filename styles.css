@@ -128,14 +128,7 @@ html, body {
 }
 
 #book-form * {
-    font-size: 1.5rem;
     text-align: center;
-}
-
-#book-form > label {
-    margin-top: 2%;
-    padding-top: 5px;
-    letter-spacing: 2px;
 }
 
 #book-form > input {
@@ -143,7 +136,9 @@ html, body {
     border-bottom: 2px solid var(--header-contrast-color);
     opacity: 40%;
     background-color: transparent;
+    padding-bottom: 0px;
     color: var(--header-contrast-color);
+    font-size: 1.5rem;
 }
 
 #book-form > input:focus {
@@ -166,4 +161,19 @@ html, body {
     padding-right: 10%;
     padding-top: 5%;
     padding-bottom: 5%;
+    font-size: 1.5rem;
+}
+
+.error {
+    display: none;
+    padding-top: 0px;
+    color: var(--header-contrast-color);
+    font-size: 1rem;
+}
+
+#book-form > .info {
+    font-size: 1.5rem;
+    margin-top: 2%;
+    padding-top: 5px;
+    letter-spacing: 2px;
 }

@@ -1,5 +1,3 @@
-let myLibrary = [];
-
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -10,34 +8,45 @@ function Book(title, author, pages, read) {
     };
 }
 
-function addBookToLibrary() {
-    const title = prompt("title");
-    const author = prompt("author");
-    const pages = prompt("pages");
-    const read = prompt("read");
-    myLibrary.push(new Book(title, author, pages, read));
+function addBook(title, author, pages, read) {
+    const book = new Book(title, author, pages, read);
+    myLibrary.push(book);
+    displayBook();
 }
 
 function displayBook() {
     const body = document.querySelector(".content");
-    myLibrary.forEach((currentValue) => {
+    for (let i = 0; i < myLibrary.length; i++) {
         const bookDiv = document.createElement("div");
         const titleHeader = document.createElement("h1");
         const authorHeader = document.createElement("p");
         const pagesHeader = document.createElement("p")
         const readHeader = document.createElement("p");
-        titleHeader.textContent = currentValue.title;
-        authorHeader.textContent = currentValue.author;
-        pagesHeader.textContent = currentValue.pages;
-        readHeader.textContent = currentValue.read;
+        titleHeader.textContent = myLibrary[i].title;
+        authorHeader.textContent = myLibrary[i].author;
+        pagesHeader.textContent = myLibrary[i].pages;
+        readHeader.textContent = myLibrary[i].read;
         bookDiv.appendChild(titleHeader);
         bookDiv.appendChild(authorHeader);
         bookDiv.appendChild(pagesHeader);
         bookDiv.appendChild(readHeader);
+        bookDiv.dataset.index = i;
         bookDiv.classList.toggle("book-card");
         body.appendChild(bookDiv);
-    });
+    }
 }
+
+function emptyForm() {
+    document.querySelector("#title-error").style.display = "none";
+    document.querySelector("#author-error").style.display = "none";
+    document.querySelector("#page-error").style.display = "none";
+    document.querySelector("#title").value = "";
+    document.querySelector("#author").value = "";
+    document.querySelector("#pages").value = "";
+    document.querySelector("#read").checked = false;
+}
+
+const myLibrary = [];
 
 document.querySelector(".new-book").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "flex";
@@ -45,4 +54,41 @@ document.querySelector(".new-book").addEventListener("click", () => {
 
 document.querySelector(".opacity-overlay").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "none";
+    emptyForm();
 });
+
+document.querySelector("#add-button").addEventListener("click", () => {
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
+    const read = document.querySelector("#read");
+    if (title.value.length > 0 && author.value.length > 0 && pages.value >= 1) {
+        if (read.checked == true) {
+            addBook(title.value, author.value, pages.value, "read");
+            document.querySelector(".popup").style.display = "none";
+            emptyForm();
+        } else {
+            addBook(title.value, author.value, pages.value, "not read");
+            document.querySelector(".popup").style.display = "none";
+            emptyForm();
+        }
+    } else {
+        if (title.value.length == 0) {
+            document.querySelector("#title-error").style.display = "block";
+        } else {
+            document.querySelector("#title-error").style.display = "none";
+        }
+        if (author.value.length == 0) {
+            document.querySelector("#author-error").style.display = "block";
+        } else {
+            document.querySelector("#author-error").style.display = "none";
+        }
+        if (pages.value <= 0) {
+            document.querySelector("#page-error").style.display = "block";
+        } else {
+            document.querySelector("#page-error").style.display = "none";
+        }
+    }
+});
+
+displayBook();
