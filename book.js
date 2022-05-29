@@ -19,7 +19,7 @@ function addBookToLibrary() {
 }
 
 function displayBook() {
-    const body = document.querySelector("body");
+    const body = document.querySelector(".content");
     myLibrary.forEach((currentValue) => {
         const bookDiv = document.createElement("div");
         const titleHeader = document.createElement("h1");
@@ -34,6 +34,7 @@ function displayBook() {
         bookDiv.appendChild(authorHeader);
         bookDiv.appendChild(pagesHeader);
         bookDiv.appendChild(readHeader);
+        bookDiv.classList.toggle("book-card");
         body.appendChild(bookDiv);
     });
 }
