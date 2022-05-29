@@ -2,6 +2,7 @@
     --header-bg-color: #4338CA;
     --header-contrast-color: #EEF2FF;
     --content-bg-color: #EEF2FF;
+    --card-header-color: #4F46E5;
     --card-bg-color: #6366F1;
     --card-contrast-color: #E0E7FF
 }
@@ -27,6 +28,8 @@ html, body {
     height: clamp(200px, 300px, 300vh);
     background-color: var(--header-bg-color);
     color: var(--header-contrast-color);
+    z-index: 1;
+    box-shadow: 0px 1px 5px #101010;
 }
 
 .content {
@@ -46,17 +49,41 @@ html, body {
 
 .book-card {
     text-align: center;
-    border: 3px solid #C7D2FE;
+    border: 3px solid #312E81;
     border-radius: 30px;
     overflow: auto;
     background-color: var(--card-bg-color);
     color: var(--card-contrast-color);
+    box-shadow: 0px 0px 3px #101010;
 }
 
 .book-card h1{
     padding-top: 2%;
     padding-left: 0.5%;
     padding-right: 0.5%;
-    background-color: var(--header-bg-color);
+    background-color: var(--card-header-color);
     color: var(--header-contrast-color);
+    box-shadow: 0px 1px 3px #101010;
+}
+
+.new-note {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    padding: 2.5%;
+    border-radius: 100%;
+    border: none;
+    background-image: url("./resource/plus.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--card-header-color);
+    color: var(--header-contrast-color);
+    box-shadow: 0px 0px 5px #101010;
+    transition: background-color 1s;
+}
+
+.new-note:hover  {
+    background-image: url("./resource/plus-hover.svg");
+    background-color: var(--header-contrast-color);
+    color: var(--card-header-color);
 }
