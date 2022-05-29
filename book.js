@@ -11,29 +11,36 @@ function Book(title, author, pages, read) {
 function addBook(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
-    displayBook();
+    addCard(myLibrary.length-1);
+    document.querySelector(".popup").style.display = "none";
+    emptyForm();
 }
 
-function displayBook() {
+function displayAllBook() {
     const body = document.querySelector(".content");
     for (let i = 0; i < myLibrary.length; i++) {
-        const bookDiv = document.createElement("div");
-        const titleHeader = document.createElement("h1");
-        const authorHeader = document.createElement("p");
-        const pagesHeader = document.createElement("p")
-        const readHeader = document.createElement("p");
-        titleHeader.textContent = myLibrary[i].title;
-        authorHeader.textContent = myLibrary[i].author;
-        pagesHeader.textContent = myLibrary[i].pages;
-        readHeader.textContent = myLibrary[i].read;
-        bookDiv.appendChild(titleHeader);
-        bookDiv.appendChild(authorHeader);
-        bookDiv.appendChild(pagesHeader);
-        bookDiv.appendChild(readHeader);
-        bookDiv.dataset.index = i;
-        bookDiv.classList.toggle("book-card");
-        body.appendChild(bookDiv);
+        addCard(i)
     }
+}
+
+function addCard(index) {
+    const body = document.querySelector(".content");
+    const bookDiv = document.createElement("div");
+    const titleHeader = document.createElement("h1");
+    const authorHeader = document.createElement("p");
+    const pagesHeader = document.createElement("p")
+    const readHeader = document.createElement("p");
+    titleHeader.textContent = myLibrary[index].title;
+    authorHeader.textContent = myLibrary[index].author;
+    pagesHeader.textContent = myLibrary[index].pages;
+    readHeader.textContent = myLibrary[index].read;
+    bookDiv.appendChild(titleHeader);
+    bookDiv.appendChild(authorHeader);
+    bookDiv.appendChild(pagesHeader);
+    bookDiv.appendChild(readHeader);
+    bookDiv.dataset.index = index;
+    bookDiv.classList.toggle("book-card");
+    body.appendChild(bookDiv);
 }
 
 function emptyForm() {
@@ -65,12 +72,8 @@ document.querySelector("#add-button").addEventListener("click", () => {
     if (title.value.length > 0 && author.value.length > 0 && pages.value >= 1) {
         if (read.checked == true) {
             addBook(title.value, author.value, pages.value, "read");
-            document.querySelector(".popup").style.display = "none";
-            emptyForm();
         } else {
             addBook(title.value, author.value, pages.value, "not read");
-            document.querySelector(".popup").style.display = "none";
-            emptyForm();
         }
     } else {
         if (title.value.length == 0) {
@@ -90,5 +93,7 @@ document.querySelector("#add-button").addEventListener("click", () => {
         }
     }
 });
-
-displayBook();
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+displayAllBook();
