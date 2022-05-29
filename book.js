@@ -38,3 +38,21 @@ function displayBook() {
         body.appendChild(bookDiv);
     });
 }
+
+myLibrary.push(new Book("long long long long long title title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+myLibrary.push(new Book("title", "author", "pages", "read"));
+displayBook();

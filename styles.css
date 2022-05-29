@@ -2,6 +2,8 @@
     --header-bg-color: #4338CA;
     --header-contrast-color: #EEF2FF;
     --content-bg-color: #EEF2FF;
+    --card-bg-color: #6366F1;
+    --card-contrast-color: #E0E7FF
 }
 
 * {
@@ -28,18 +30,33 @@ html, body {
 }
 
 .content {
-    padding-top: 10px;
-    width: 100vw;
+    width: 98vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 20px;
+    padding-bottom: 5px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 3fr));
     grid-auto-rows: minmax(300px, 500px) ;
     grid-auto-flow: row;
-    gap: 1%;
+    gap: 20px;
     overflow: auto;
     background-color: var(--content-bg-color);
-    color: #101010;
 }
 
 .book-card {
     text-align: center;
+    border: 3px solid #C7D2FE;
+    border-radius: 30px;
+    overflow: auto;
+    background-color: var(--card-bg-color);
+    color: var(--card-contrast-color);
+}
+
+.book-card h1{
+    padding-top: 2%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    background-color: var(--header-bg-color);
+    color: var(--header-contrast-color);
 }
