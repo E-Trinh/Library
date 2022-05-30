@@ -26,6 +26,7 @@ function displayAllBook() {
 function addCard(index) {
     const body = document.querySelector(".content");
     const bookDiv = document.createElement("div");
+    const dataDiv = document.createElement("div");
     const titleHeader = document.createElement("h1");
     const authorHeader = document.createElement("p");
     const pagesHeader = document.createElement("p")
@@ -33,21 +34,23 @@ function addCard(index) {
     const readButton = document.createElement("button");
     const deleteButton = document.createElement("button");
     titleHeader.textContent = myLibrary[index].title;
-    authorHeader.textContent = myLibrary[index].author;
-    pagesHeader.textContent = myLibrary[index].pages;
+    authorHeader.textContent = "Author: " + myLibrary[index].author;
+    pagesHeader.textContent = myLibrary[index].pages + " pages";
     readHeader.textContent = myLibrary[index].read;
     readButton.textContent = "Change Read Status";
     deleteButton.textContent = "Delete";
     bookDiv.appendChild(titleHeader);
-    bookDiv.appendChild(authorHeader);
-    bookDiv.appendChild(pagesHeader);
-    bookDiv.appendChild(readHeader);
-    bookDiv.appendChild(readButton);
-    bookDiv.appendChild(deleteButton);
+    dataDiv.appendChild(authorHeader);
+    dataDiv.appendChild(pagesHeader);
+    dataDiv.appendChild(readHeader);
+    dataDiv.appendChild(readButton);
+    dataDiv.appendChild(deleteButton);
+    bookDiv.appendChild(dataDiv);
     bookDiv.dataset.index = index;
     readButton.addEventListener("click", updateReadStatus);
     deleteButton.addEventListener("click", deleteBook);
     bookDiv.classList.toggle("book-card");
+    dataDiv.classList.toggle("data-card");
     readHeader.classList.toggle("read-text")
     readButton.classList.toggle("read-button");
     deleteButton.classList.toggle("delete-button");
