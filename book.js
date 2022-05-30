@@ -30,22 +30,27 @@ function addCard(index) {
     const authorHeader = document.createElement("p");
     const pagesHeader = document.createElement("p")
     const readHeader = document.createElement("p");
-    const readButton = document.createElement("button")
+    const readButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
     titleHeader.textContent = myLibrary[index].title;
     authorHeader.textContent = myLibrary[index].author;
     pagesHeader.textContent = myLibrary[index].pages;
     readHeader.textContent = myLibrary[index].read;
     readButton.textContent = "Change Read Status";
+    deleteButton.textContent = "Delete";
     bookDiv.appendChild(titleHeader);
     bookDiv.appendChild(authorHeader);
     bookDiv.appendChild(pagesHeader);
     bookDiv.appendChild(readHeader);
     bookDiv.appendChild(readButton);
+    bookDiv.appendChild(deleteButton);
     bookDiv.dataset.index = index;
     readButton.addEventListener("click", updateReadStatus);
+    deleteButton.addEventListener("click", deleteBook);
     bookDiv.classList.toggle("book-card");
     readHeader.classList.toggle("read-text")
     readButton.classList.toggle("read-button");
+    deleteButton.classList.toggle("delete-button");
     body.appendChild(bookDiv);
 }
 
@@ -53,6 +58,12 @@ function updateReadStatus(event) {
     const card = event.target.parentElement;
     myLibrary[card.dataset.index].read = myLibrary[card.dataset.index].read === "read" ? "no read" : "read";
     document.querySelector("div[data-index='" + card.dataset.index + "'] > .read-text").textContent = myLibrary[card.dataset.index].read; 
+}
+
+function deleteBook(event) {
+    myLibrary.splice(event.target.parentElement.dataset.index, 1);
+    document.querySelector(".content").textContent = "";
+    displayAllBook();
 }
 
 function emptyForm() {
@@ -105,9 +116,5 @@ document.querySelector("#add-button").addEventListener("click", () => {
         }
     }
 });
-
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
-myLibrary.push(new Book("title", "author", "pages", "read"));
 
 displayAllBook();
